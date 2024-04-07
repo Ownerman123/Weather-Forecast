@@ -7,16 +7,36 @@
     <link rel="stylesheet" href="./assets/css/style.css">
     <title>Weather Forecast</title>
 </head>
-<body>
-    <header class="contianer-fluid">
-        <h1>Coool title</h1>
-        <button id="light-dark-btn">Theme?</button>
+<body class="container-fluid">
+    <header class=" mb-5 ">
+        <div class="row align-items-center align-self-center justify-content-around mb-1">
+            <h1 class="col-10 mt-3">Coool title</h1>
+            <button id="light-dark-btn" class="btn btn-dark col-1">Theme?</button>
+        </div>
     </header>
   
     
-        <div class="contianer-fluid">
-            <aside class="col-3"></aside>
-            <main class="col-9">
+        <div class="container-fluid row">
+            <aside class=" col-3 container-fluid align-self-start">
+                <form action="submit" class="row align-items-center">
+                    <label for="city-input"><strong>City</strong></label>
+                    <input type="text" name="city-input" id="city-input" placeholder="Enter City name here...">
+                    
+                </form>
+                <div id="saved-locations" class="col-12 row">
+                    <button class="my-2 btn btn-secondary">sample button</button>
+                    <button class="my-2 btn btn-secondary">sample button</button>
+                    <button class="my-2 btn btn-secondary">sample button</button>
+                    <button class="my-2 btn btn-secondary">sample button</button>
+                </div>
+            </aside>
+            <main class="col-8 container-fluid">
+                <div class="row col-12" id="first-day-card">
+                    <h3 id="first-day-header">Today</h3>
+                </div>
+                <div id="five-day-cards" class="row">
+
+                </div>
 
             </main>
 
@@ -24,6 +44,7 @@
         </div>
    
     <script src="assets/js/script.js"></script>
+    <script type="module" src="assets/js/importer.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 </body>
 </html>
