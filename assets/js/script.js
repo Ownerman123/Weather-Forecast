@@ -1,7 +1,7 @@
 const apiKey = "bb50796aabd4d5ec717c3afc5dc09b4f";
 const wrongRichfield = `https://api.openweathermap.org/data/2.5/forecast?q=Richfield,Utah,USA&appid=${apiKey}&cnt=5&units=imperial`
  
-// const cityList = fetchJSONData();
+const cityList = window.importedList
 
 // console.log(cityList);
 fetch(`https://api.openweathermap.org/data/2.5/forecast?id=5545710&appid=${apiKey}&cnt=5&units=imperial`).then(function (response) {
@@ -20,7 +20,7 @@ function GetWeatherData(location) {
 let usCities = [];
 
 
-for(city of importedList) {
+for(city of cityListList) {
     if (city.country === "US") {
         usCities.push(city);
     }
