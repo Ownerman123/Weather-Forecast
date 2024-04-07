@@ -19,7 +19,7 @@ function GetWeatherData(location) {
 
 
 function fetchJSONData() {
-    fetch("./assets/jsons/citylist.json")
+    fetch("./jsons/citylist.json")
         .then((res) => {
             if (!res.ok) {
                 throw new Error
