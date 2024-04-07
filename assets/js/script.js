@@ -17,6 +17,18 @@ function GetWeatherData(location) {
 
 }
 
+let usCities = [];
+
+
+for(city of cityList) {
+    if (city.country === "US") {
+        usCities.push(city);
+    }
+}
+
+console.log(usCities);
+
+
 
 // function fetchJSONData() {
 //     fetch("./jsons/citylist.json")
