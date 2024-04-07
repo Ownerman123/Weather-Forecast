@@ -20,7 +20,7 @@ function GetWeatherData(location) {
 let usCities = [];
 
 
-for(city of cityList) {
+for(city of importedList) {
     if (city.country === "US") {
         usCities.push(city);
     }
