@@ -4,7 +4,7 @@ const wrongRichfield = `https://api.openweathermap.org/data/2.5/forecast?q=Richf
 const cityList = window.importedList
 
 // console.log(cityList);
-fetch(`https://api.openweathermap.org/data/2.5/forecast?id=5545710&appid=${apiKey}&cnt=5&units=imperial`).then(function (response) {
+fetch(`https://api.openweathermap.org/data/2.5/forecast?id=5545710&appid=${apiKey}&units=imperial`).then(function (response) {
 
    return response.json();
     
@@ -20,9 +20,9 @@ function GetWeatherData(location) {
 let usCities = [];
 
 
-for(city of cityList) {
-    if (city.country === "US") {
-        usCities.push(city);
+for(i =0; i < cityList.length; i++) {
+    if (cityList[i].country === "US") {
+        usCities.push(cityList[i]);
     }
 }
 
