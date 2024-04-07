@@ -1,5 +1,5 @@
-"use strict"
+// "use strict"
 
 
-import cityList from './jsons/citylist.json' assert {type: 'json'}
-console.log(cityList);
+// import cityList from './jsons/citylist.json' assert {type: 'json'}
+// console.log(cityList);
