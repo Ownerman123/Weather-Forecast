@@ -31,7 +31,7 @@ console.log(usCities);
 
 function setCityListUntilItsDefined() {
 
-    while(townList){
+    while(!townList){
         townList = window.importedList;
         console.log(townList)
     }
