@@ -59,6 +59,9 @@ function GetCityId(event){
 }
 
 function CreateCardsWithData(cityinfo) {
+    todaysWeatherCard.innerHTML = '';
+    fiveDayCardsContainer.innerHTML = '';
+
     const PickEmoji = function(weather) {
         
     
@@ -94,6 +97,7 @@ function CreateCardsWithData(cityinfo) {
     
     
     }
+    // create first first card
     const firstdayCard = document.createElement("div");
     const firstdayinfo = cityinfo.list[0];
     const firstdayweather = PickEmoji(firstdayinfo.weather[0].main);
@@ -103,11 +107,29 @@ function CreateCardsWithData(cityinfo) {
     const firstdayps = document.createElement("p");
     const firstdaypstextnode = document.createTextNode(`Temp: ${firstdayinfo.main.temp} \n Wind: ${firstdayinfo.wind.speed}MPH \n Humidity: ${firstdayinfo.main.humidity} %`);
     firstdayps.append(firstdaypstextnode);
-    console.log(firstdayTitle ,firstdayps)
+    
     firstdayCard.append(firstdayTitle);
     firstdayCard.append(firstdayps);
     todaysWeatherCard.append(firstdayCard);
-    firstdayCard.setAttribute('class', "bg-primary m-3");
+    firstdayCard.setAttribute('class', "bg-primary p-3 m-3");
+    //create all 5 day cards
+    for(let i = 1; i <= cityinfo.list.length; i+=8 ){
+        console.log(i);
+        const smallcard = document.createElement("div");
+        const smallcardinfo = cityinfo.list[i];
+        const smalldayweather = PickEmoji(smallcardinfo.weather[0].main);
+        const smallcardTitle = document.createElement('h4');
+        const smallcardTitletextnode = document.createTextNode(`${smallcardinfo.dt_txt}  ${smalldayweather}`);
+        smallcardTitle.append(smallcardTitletextnode);
+        const smallcardps = document.createElement("p");
+        const smallcardpstextnode = document.createTextNode(`Temp: ${smallcardinfo.main.temp} \n Wind: ${smallcardinfo.wind.speed}MPH \n Humidity: ${smallcardinfo.main.humidity} %`);
+        smallcardps.append(smallcardpstextnode);
+       
+        smallcard.append(smallcardTitle);
+        smallcard.append(smallcardps);
+        fiveDayCardsContainer.append(smallcard);
+        smallcard.setAttribute('class', "bg-secondary m-3 p-3 col-2");
+    }
     
 }
 
