@@ -5,14 +5,19 @@ const stateInput = document.getElementById("states");
 const cityInput = document.getElementById("city-input");
 const todaysWeatherCard = document.getElementById("first-day-card");
 const fiveDayCardsContainer = document.getElementById("five-day-cards");
+const savedLocations = document.getElementById("saved-locations");
 formBtn.addEventListener('click', GetCityId);
 
  
 let townList = window.importedList;
 let usCities = [];
-let markedCities = [];
+let markedCities = ['no-data'];
 
+if(localStorage.getItem("saved-cities")){
+markedCities = JSON.parse(localStorage.getItem("saved-cities"));
+}
 setUsCities();
+RefreshCityOptions();
 
 
 
@@ -22,13 +27,53 @@ function GetCityId(event){
    
     const curCity = usCities.filter(city => city.name === cityInput.value && city.state === stateInput.value);
     const cityid = curCity[0].id;
+
+    if(markedCities[0] === 'no-data'){
+        markedCities[0] = cityid;
+    localStorage.setItem("saved-cities", JSON.stringify(markedCities));
+    console.log("added new id")
+    }
+
+    if(!markedCities.includes(cityid)){
     markedCities.push(cityid);
     localStorage.setItem("saved-cities", JSON.stringify(markedCities));
+    console.log("added new id")
+}
+    RefreshCityOptions();
     DisplayCityInfo(cityid);
+    cityInput.value = '';
     
     
 
     
+}
+
+function GetCityIdForBtn(event) {
+    console.log(event.target);
+    const curCity = JSON.parse(event.target.dataset.city);
+    const cityid = curCity[0].id;
+   
+   
+    DisplayCityInfo(cityid);
+    
+}
+
+function RefreshCityOptions() {
+    if(markedCities[0] === "no-data"){return;}
+    savedLocations.innerHTML = '';
+    markedCities = JSON.parse(localStorage.getItem("saved-cities"));
+    for(cityId of markedCities){
+        const curcityid = cityId;
+       const curCity = usCities.filter(city => city.id === curcityid);
+       const newBtn = document.createElement('button');
+       newBtn.textContent = `${curCity[0].name} , ${curCity[0].state}`
+       newBtn.setAttribute('data-city', JSON.stringify(curCity))
+       newBtn.setAttribute("class", "my-2 btn btn-secondary")
+       newBtn.addEventListener('click', GetCityIdForBtn)
+       savedLocations.appendChild(newBtn);
+
+    }
+
 }
 
  function DisplayCityInfo(id) {
@@ -59,6 +104,7 @@ function GetCityId(event){
 }
 
 function CreateCardsWithData(cityinfo) {
+    //clear old cards
     todaysWeatherCard.innerHTML = '';
     fiveDayCardsContainer.innerHTML = '';
 
@@ -113,7 +159,7 @@ function CreateCardsWithData(cityinfo) {
     todaysWeatherCard.append(firstdayCard);
     firstdayCard.setAttribute('class', "bg-primary p-3 m-3");
     //create all 5 day cards
-    for(let i = 1; i <= cityinfo.list.length; i+=8 ){
+    for(let i = 6; i <= cityinfo.list.length; i+=8 ){
         console.log(i);
         const smallcard = document.createElement("div");
         const smallcardinfo = cityinfo.list[i];
