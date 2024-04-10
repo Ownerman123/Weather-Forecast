@@ -11,8 +11,8 @@
 </head>
 <body class="container-fluid">
     <header class=" mb-5 ">
-        <div class="row align-items-center align-self-center justify-content-around mb-1">
-            <h1 class="col-10 mt-3">Coool title</h1>
+        <div class="row align-items-center align-self-center justify-content-center mb-1">
+            <h1 class="col-10 mt-3">Weather Wizard</h1>
             <button id="light-dark-btn" class="btn btn-dark col-1">Theme?</button>
         </div>
     </header>
@@ -22,7 +22,8 @@
             <aside class=" col-3 container-fluid align-self-start">
                 <form action="submit" class="row align-items-center" id="the-form">
                     <label for="states">State</label>
-                    <select name="states" id="states" onchange="SetAvailableTags(this.value)">
+                    <select name="states" id="states" class="m-2" onchange="SetAvailableTags(this.value)">
+                        <option value="">choose state...</option>
                         <option value="AL">AL</option>
                         <option value="AK">AK</option>
                         <option value="AZ">AZ</option>
@@ -76,8 +77,8 @@
                         <option value="WY">WY</option>
                     </select>
                     <label for="city-input"><strong>City</strong></label>
-                    <input type="text" name="city-input" id="city-input" placeholder="Enter City name here...">
-                    <button id="submit-btn" class="my-2 btn btn-success">See Weather</button>
+                    <input type="text" name="city-input" id="city-input" class="m-2" placeholder="Enter City name here...">
+                    <button id="submit-btn" class="m-2 btn btn-success">See Weather</button>
                 </form>
                 <div id="saved-locations" class="col-12 row">
                     <button class="my-2 btn btn-secondary">sample button</button>

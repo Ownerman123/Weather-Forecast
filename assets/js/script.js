@@ -68,7 +68,7 @@ function RefreshCityOptions() {
        const newBtn = document.createElement('button');
        newBtn.textContent = `${curCity[0].name} , ${curCity[0].state}`
        newBtn.setAttribute('data-city', JSON.stringify(curCity))
-       newBtn.setAttribute("class", "my-2 btn btn-secondary")
+       newBtn.setAttribute("class", "m-2 btn btn-secondary")
        newBtn.addEventListener('click', GetCityIdForBtn)
        savedLocations.appendChild(newBtn);
 
