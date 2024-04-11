@@ -6,6 +6,8 @@ const cityInput = document.getElementById("city-input");
 const todaysWeatherCard = document.getElementById("first-day-card");
 const fiveDayCardsContainer = document.getElementById("five-day-cards");
 const savedLocations = document.getElementById("saved-locations");
+const themeBtn = document.getElementById('light-dark-btn');
+themeBtn.addEventListener('click', ChangeTheme);
 formBtn.addEventListener('click', GetCityId);
 
  
@@ -18,8 +20,63 @@ markedCities = JSON.parse(localStorage.getItem("saved-cities"));
 }
 setUsCities();
 RefreshCityOptions();
+SetTheme();
+
+function ChangeTheme(){
+
+    if(localStorage.getItem('theme') === "light"){
+        localStorage.setItem('theme', 'dark');
+    }else{
+        localStorage.setItem('theme', "light");
+    }
+
+    SetTheme();
+ 
+}
+
+function SetTheme(){
+
+    let themeInput;
+    let curtheme;
+    let reverseInput;
+    const docBtns = document.getElementsByClassName('options-btn');
+    const docBody = document.getElementById('body');
+    const docLabeles = document.getElementsByClassName('inputlabel')
+    
+
+    if(localStorage.getItem('theme')){
+        
+         curtheme = localStorage.getItem('theme')
+        
+    }else{
+         curtheme = 'light';
+        localStorage.setItem('theme' , curtheme)
+        
+    }
+
+    themeInput = curtheme
+
+    if(curtheme === 'light'){
+        reverseInput = 'dark';
+    }else{
+        reverseInput ='light';
+    }
+
+    
+    for(btn of docBtns){
+
+        btn.setAttribute('class', `options-btn m-2 btn btn-secondary btn-${reverseInput}`);
+
+    }
+
+    docBody.setAttribute('class', `container-fluid bg-${themeInput}`);
+    for(label of docLabeles){
+
+        label.setAttribute('class',`inputlabel text-${reverseInput}`)
+    }
 
 
+}
 
 
 function GetCityId(event){
@@ -68,7 +125,7 @@ function RefreshCityOptions() {
        const newBtn = document.createElement('button');
        newBtn.textContent = `${curCity[0].name} , ${curCity[0].state}`
        newBtn.setAttribute('data-city', JSON.stringify(curCity))
-       newBtn.setAttribute("class", "m-2 btn btn-secondary")
+       newBtn.setAttribute("class", "options-btn m-2 btn btn-secondary ")
        newBtn.addEventListener('click', GetCityIdForBtn)
        savedLocations.appendChild(newBtn);
 
@@ -157,7 +214,7 @@ function CreateCardsWithData(cityinfo) {
     firstdayCard.append(firstdayTitle);
     firstdayCard.append(firstdayps);
     todaysWeatherCard.append(firstdayCard);
-    firstdayCard.setAttribute('class', "bg-primary p-3 m-3");
+    firstdayCard.setAttribute('class', "bg-primary p-3 m-3 col-12 me-0");
     //create all 5 day cards
     for(let i = 6; i <= cityinfo.list.length; i+=8 ){
         console.log(i);
@@ -174,7 +231,7 @@ function CreateCardsWithData(cityinfo) {
         smallcard.append(smallcardTitle);
         smallcard.append(smallcardps);
         fiveDayCardsContainer.append(smallcard);
-        smallcard.setAttribute('class', "bg-secondary m-3 p-3 col-2");
+        smallcard.setAttribute('class', "bg-secondary m-3 p-3 col-lg-2 col-m-3 col-sm-4 col-xs-10 p-3");
     }
     
 }

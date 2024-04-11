@@ -9,19 +9,19 @@
     <script type="module" src="assets/js/importer.js"></script>
     <title>Weather Forecast</title>
 </head>
-<body class="container-fluid">
+<body id="body" class="container-fluid bg-light">
     <header class=" mb-5 ">
         <div class="row align-items-center align-self-center justify-content-center mb-1">
-            <h1 class="col-10 mt-3">Weather Wizard</h1>
-            <button id="light-dark-btn" class="btn btn-dark col-1">Theme?</button>
+            <h1 class="col-lg-10 col-md-8 col-sm-9 mt-3">Weather Wizard</h1>
+            <button id="light-dark-btn" class="btn btn-dark col-lg-1 col-md-2 col-sm-2 me-1">Theme?</button>
         </div>
     </header>
   
     
         <div class="container-fluid row">
-            <aside class=" col-3 container-fluid align-self-start">
-                <form action="submit" class="row align-items-center" id="the-form">
-                    <label for="states">State</label>
+            <aside class=" col-sm-5 col-md-4 container-fluid align-self-start p-3">
+                <form action="submit" class="row align-items-center ms-1" id="the-form">
+                    <label for="states" class="inputlabel text-dark">State</label>
                     <select name="states" id="states" class="m-2" onchange="SetAvailableTags(this.value)">
                         <option value="">choose state...</option>
                         <option value="AL">AL</option>
@@ -76,21 +76,21 @@
                         <option value="WI">WI</option>
                         <option value="WY">WY</option>
                     </select>
-                    <label for="city-input"><strong>City</strong></label>
+                    <label for="city-input" class="inputlabel text-dark"><strong>City</strong></label>
                     <input type="text" name="city-input" id="city-input" class="m-2" placeholder="Enter City name here...">
                     <button id="submit-btn" class="m-2 btn btn-success">See Weather</button>
                 </form>
-                <div id="saved-locations" class="col-12 row">
+                <div id="saved-locations" class="col-12 row p-3">
                     <button class="my-2 btn btn-secondary">sample button</button>
                    
                 </div>
             </aside>
-            <main class="col-8 container-fluid">
+            <main class="col-md-7 col-sm-6 container-fluid">
                 <div class="row col-12" id="first-day-card">
                     
 
                 </div>
-                <div id="five-day-cards" class="row">
+                <div id="five-day-cards" class="row ">
 
                 </div>
 
