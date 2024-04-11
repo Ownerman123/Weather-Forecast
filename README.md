@@ -6,7 +6,7 @@ As a new developer I wanted to learn about using server side apis. So i made thi
 
 ## Usage
 
-To check the weather select the US state your city is in then type or select your city from the recomended drop down and click the "See weather" button. To view previous Locations clikc the button on the left side labeled with the information you wish to see.
+To check the weather select the US state your city is in then type or select your city from the recomended drop down and click the "See weather" button. To view previous Locations click the button on the left side labeled with the information you wish to see.
 
 ## Deployed application
 
